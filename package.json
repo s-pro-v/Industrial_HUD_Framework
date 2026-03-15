@@ -1,0 +1,24 @@
+{
+  "name": "industrial-hud-framework",
+  "version": "1.0.0",
+  "description": "Industrial / HUD-style UI framework: panels, modals, toasts, confirm, tabs, ripple buttons, theme (light/dark). Use as script or init in your app.",
+  "main": "dist/industrial-hud.js",
+  "style": "css/style.css",
+  "files": [
+    "dist/industrial-hud.js",
+    "css/style.css",
+    "css/alert.css"
+  ],
+  "keywords": [
+    "hud",
+    "industrial",
+    "ui",
+    "framework",
+    "modal",
+    "toast",
+    "confirm",
+    "theme"
+  ],
+  "author": "",
+  "license": "MIT"
+}
