@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl" theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industrial HUD – zdalna biblioteka (CDN)</title>
+  <!-- Fonty (opcjonalne) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Zdalna biblioteka – CDN (od wersji 1.0.0 z npm) -->
+  <link href="https://unpkg.com/industrial-hud-framework@1.0.0/css/style.css" rel="stylesheet">
+  <link href="https://unpkg.com/industrial-hud-framework@1.0.0/css/alert.css" rel="stylesheet">
+  <script src="https://unpkg.com/industrial-hud-framework@1.0.0/dist/industrial-hud.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <header class="hud-header">
+        <h1><i class="fas fa-microchip" style="margin-right:8px; color: var(--highlight-color)"></i> System Core (CDN)
+        </h1>
+        <div class="system-meta">
+          <span class="system-meta-item system-meta-general">
+            <i class="fas fa-satellite-dish"></i> STATUS: <span class="system-meta-item-value"
+              style="margin-left:5px">ONLINE</span>
+          </span>
+          <span class="system-meta-item system-meta-general" style="margin-left: 15px;">
+            <i class="fas fa-clock"></i> <span id="timestamp" class="time">00:00:00</span>
+          </span>
+        </div>
+      </header>
+      <div class="action-bar panel">
+        <button id="themeToggle" class="btn-md btn-ripple"><i class="fas fa-adjust"></i> Toggle Engine</button>
+        <button id="settingsBtn" class="btn-md btn-ripple"><i class="fas fa-sliders-h"></i> Parameters</button>
+        <button id="purgeCacheBtn" class="btn-md btn-ripple danger" style="margin-left: auto;"><i
+            class="fas fa-radiation"></i> Purge Cache</button>
+      </div>
+      <div class="workspace">
+        <div class="terminal-panel">
+          <div class="terminal-label">
+            <span><i class="fas fa-terminal"></i> Output Stream</span>
+            <span style="color: var(--highlight-color)">[0x8F2A]</span>
+          </div>
+          <div class="editor-container" id="terminalOutput">
+            <div class="log-line">
+              <span class="log-time">[00:00:01]</span><span class="log-info">INFO:</span><span class="log-msg">Zdalna
+                biblioteka (CDN) załadowana.</span>
+            </div>
+          </div>
+        </div>
+        <div class="terminal-panel">
+          <div class="terminal-label">
+            <span><i class="fas fa-project-diagram"></i> Interface</span>
+            <span style="color: var(--success-color)">ACTIVE</span>
+          </div>
+          <div class="editor-container" style="padding: 15px;">
+            <button class="btn-md btn-ripple" onclick="IndustrialHUD.toast('success', 'Test', 'Toast z CDN.', 3000)"><i
+                class="fas fa-bell"></i> Pokaż toast</button>
+            <button class="btn-md btn-ripple danger" style="margin-left: 10px;"
+              onclick="IndustrialHUD.confirm({ type: 'warning', title: 'Test', message: 'Modal z CDN.' })"><i
+                class="fas fa-question"></i> Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-overlay" id="confirmOverlay" aria-hidden="true"></div>
+    <div class="system-alert-modal" id="confirmModal" role="dialog" aria-modal="true"
+      aria-labelledby="confirmModalTitle" aria-describedby="confirmModalMessage" data-alert-type="info">
+      <div class="modal-content">
+        <div class="system-alert-header">
+          <span class="system-alert-title" id="confirmModalTitle">Confirm</span>
+          <button type="button" class="close-btn btn-ripple" id="confirmModalClose" aria-label="Zamknij"><i
+              class="fas fa-times"></i></button>
+        </div>
+        <div class="system-alert-body">
+          <div class="system-alert-main-title" id="confirmModalMainTitle">Title</div>
+          <p class="confirm-message" id="confirmModalMessage">Message</p>
+        </div>
+        <div class="system-alert-footer">
+          <button type="button" class="cancel-btn btn-ripple" id="confirmModalCancel">Cancel</button>
+          <button type="button" class="system-alert-btn system-alert-btn-primary btn-ripple"
+            id="confirmModalConfirm">Confirm</button>
+        </div>
+      </div>
+    </div>
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      IndustrialHUD.init('#app', { themeRoot: document.documentElement });
+    });
+  </script>
+</body>
+
+</html>

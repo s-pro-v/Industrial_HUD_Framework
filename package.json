@@ -4,6 +4,8 @@
   "description": "Industrial / HUD-style UI framework: panels, modals, toasts, confirm, tabs, ripple buttons, theme (light/dark). Use as script or init in your app.",
   "main": "dist/industrial-hud.js",
   "style": "css/style.css",
+  "unpkg": "dist/industrial-hud.js",
+  "jsdelivr": "dist/industrial-hud.js",
   "files": [
     "dist/industrial-hud.js",
     "css/style.css",

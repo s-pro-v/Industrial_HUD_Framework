@@ -6,7 +6,40 @@ Framework UI w stylu industrial / HUD: panele, modale, toasty, potwierdzenia, za
 
 ## Instalacja (jako biblioteka)
 
-### Opcja 1: Skopiowanie plików
+### Opcja 1: Zdalna biblioteka (CDN)
+
+Po opublikowaniu paczki na npm (`npm publish`) możesz ładować framework z CDN, bez kopiowania plików.
+
+**unpkg:**
+
+```html
+<link href="https://unpkg.com/industrial-hud-framework@1.0.0/css/style.css" rel="stylesheet">
+<link href="https://unpkg.com/industrial-hud-framework@1.0.0/css/alert.css" rel="stylesheet">
+<script src="https://unpkg.com/industrial-hud-framework@1.0.0/dist/industrial-hud.js"></script>
+```
+
+**jsDelivr:**
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/css/alert.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/dist/industrial-hud.js"></script>
+```
+
+Zamiast `@1.0.0` możesz użyć `@latest` (zawsze najnowsza wersja) lub innej wersji. Następnie wywołaj `IndustrialHUD.init('#app')` po załadowaniu DOM.
+
+**CDN z GitHub (bez npm):** Jeśli repozytorium jest na GitHubie, możesz użyć jsDelivr:
+
+```html
+<!-- Zamień USER/REPO na np. twojuser/industrial-hud-framework, oraz v1.0.0 na tag lub branch -->
+<link href="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/css/style.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/css/alert.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/dist/industrial-hud.js"></script>
+```
+
+---
+
+### Opcja 2: Skopiowanie plików
 
 Skopiuj do projektu:
 
@@ -14,7 +47,7 @@ Skopiuj do projektu:
 - `css/style.css`
 - `css/alert.css`
 
-### Opcja 2: npm (lokalnie)
+### Opcja 3: npm (lokalnie)
 
 ```bash
 npm install ./ścieżka/do/Industrial-HUD-Framework
@@ -97,6 +130,8 @@ IndustrialHUD.toast('success', 'Zapisano', 'Dane zostały zapisane.', 5000);
 ```
 Industrial HUD Framework/
 ├── index.html          # Strona demo (używa main.js + industrial-hud.js)
+├── examples/
+│   └── cdn-example.html   # Przykład ładowania zdalnej biblioteki z CDN
 ├── js/
 │   ├── industrial-hud.js   # Biblioteka (API + init)
 │   └── main.js             # Demo: wywołuje IndustrialHUD.init(document.body)
@@ -104,7 +139,7 @@ Industrial HUD Framework/
 │   ├── style.css       # Główne style (layout, przyciski, karty, sidebar…)
 │   └── alert.css       # Toasty, modale potwierdzeń
 ├── dist/
-│   └── industrial-hud.js   # Kopia biblioteki do dystrybucji
+│   └── industrial-hud.js   # Kopia biblioteki do dystrybucji (CDN / npm)
 ├── package.json
 └── README.md
 ```
