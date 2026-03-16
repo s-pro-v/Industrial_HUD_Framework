@@ -2,11 +2,13 @@
 
 Framework UI w stylu industrial / HUD: panele, modale, toasty, potwierdzenia, zakładki, przyciski z ripple, motyw jasny/ciemny. Użycie jak **UIkit** – jeden plik CSS, jeden plik JS.
 
+**Dla asystentów AI (Cursor, itp.):** W tym projekcie UI buduje się **wyłącznie** z tej biblioteki. Zasady i lista komponentów/API są w plikach **`.cursorrules`** oraz **`AGENTS.md`** – stosuj się do nich przy generowaniu kodu.
+
 ---
 
 ## Instalacja
 
-### CDN (zalecane – jak UIkit)
+### CDN (zalecane)
 
 Dołącz jeden arkusz CSS i jeden skrypt. Po publikacji na npm (`npm publish`) użyj:
 
