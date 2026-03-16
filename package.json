@@ -1,15 +1,14 @@
 {
   "name": "industrial-hud-framework",
   "version": "1.0.0",
-  "description": "Industrial / HUD-style UI framework: panels, modals, toasts, confirm, tabs, ripple buttons, theme (light/dark). Use as script or init in your app.",
-  "main": "dist/industrial-hud.js",
-  "style": "css/style.css",
-  "unpkg": "dist/industrial-hud.js",
-  "jsdelivr": "dist/industrial-hud.js",
+  "description": "Industrial / HUD-style UI framework: panels, modals, toasts, confirm, tabs, ripple buttons, theme (light/dark). Use like UIkit – one CSS, one JS.",
+  "main": "dist/js/industrial-hud.js",
+  "style": "dist/css/industrial-hud.css",
+  "unpkg": "dist/js/industrial-hud.js",
+  "jsdelivr": "dist/js/industrial-hud.js",
   "files": [
-    "dist/industrial-hud.js",
-    "css/style.css",
-    "css/alert.css"
+    "dist/css/industrial-hud.css",
+    "dist/js/industrial-hud.js"
   ],
   "keywords": [
     "hud",
@@ -19,7 +18,8 @@
     "modal",
     "toast",
     "confirm",
-    "theme"
+    "theme",
+    "uikit"
   ],
   "author": "",
   "license": "MIT"

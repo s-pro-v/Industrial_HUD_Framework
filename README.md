@@ -1,80 +1,73 @@
 # Industrial HUD Framework
 
-Framework UI w stylu industrial / HUD: panele, modale, toasty, potwierdzenia, zakładki, przyciski z ripple, motyw jasny/ciemny. Można używać jako biblioteki w dowolnym projekcie.
+Framework UI w stylu industrial / HUD: panele, modale, toasty, potwierdzenia, zakładki, przyciski z ripple, motyw jasny/ciemny. Użycie jak **UIkit** – jeden plik CSS, jeden plik JS.
 
 ---
 
-## Instalacja (jako biblioteka)
+## Instalacja
 
-### Opcja 1: Zdalna biblioteka (CDN)
+### CDN (zalecane – jak UIkit)
 
-Po opublikowaniu paczki na npm (`npm publish`) możesz ładować framework z CDN, bez kopiowania plików.
-
-**unpkg:**
-
-```html
-<link href="https://unpkg.com/industrial-hud-framework@1.0.0/css/style.css" rel="stylesheet">
-<link href="https://unpkg.com/industrial-hud-framework@1.0.0/css/alert.css" rel="stylesheet">
-<script src="https://unpkg.com/industrial-hud-framework@1.0.0/dist/industrial-hud.js"></script>
-```
+Dołącz jeden arkusz CSS i jeden skrypt. Po publikacji na npm (`npm publish`) użyj:
 
 **jsDelivr:**
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/css/style.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/css/alert.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/dist/industrial-hud.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/dist/css/industrial-hud.css">
+<script src="https://cdn.jsdelivr.net/npm/industrial-hud-framework@1.0.0/dist/js/industrial-hud.js"></script>
 ```
 
-Zamiast `@1.0.0` możesz użyć `@latest` (zawsze najnowsza wersja) lub innej wersji. Następnie wywołaj `IndustrialHUD.init('#app')` po załadowaniu DOM.
-
-**CDN z GitHub (bez npm):** Jeśli repozytorium jest na GitHubie, możesz użyć jsDelivr:
+**unpkg:**
 
 ```html
-<!-- Zamień USER/REPO na np. twojuser/industrial-hud-framework, oraz v1.0.0 na tag lub branch -->
-<link href="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/css/style.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/css/alert.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/dist/industrial-hud.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/industrial-hud-framework@1.0.0/dist/css/industrial-hud.css">
+<script src="https://unpkg.com/industrial-hud-framework@1.0.0/dist/js/industrial-hud.js"></script>
+```
+
+Zamiast `@1.0.0` możesz użyć `@latest` (najnowsza wersja).
+
+**CDN z GitHub (bez npm):** zamień `USER/REPO` i wersję (np. tag):
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/dist/css/industrial-hud.css">
+<script src="https://cdn.jsdelivr.net/gh/USER/REPO@v1.0.0/dist/js/industrial-hud.js"></script>
 ```
 
 ---
 
-### Opcja 2: Skopiowanie plików
+### Pobranie plików
 
-Skopiuj do projektu:
+Skopiuj do projektu z katalogu `dist/`:
 
-- `dist/industrial-hud.js` (lub `js/industrial-hud.js`)
-- `css/style.css`
-- `css/alert.css`
+- `dist/css/industrial-hud.css` – jeden zestaw stylów (layout, komponenty, toasty, modale)
+- `dist/js/industrial-hud.js` – logika frameworka
 
-### Opcja 3: npm (lokalnie)
+---
+
+### npm
 
 ```bash
-npm install ./ścieżka/do/Industrial-HUD-Framework
+npm install industrial-hud-framework
 ```
 
-W projekcie będziesz miał dostęp do plików z `node_modules/industrial-hud-framework/`.
+W projekcie:
+
+- `node_modules/industrial-hud-framework/dist/css/industrial-hud.css`
+- `node_modules/industrial-hud-framework/dist/js/industrial-hud.js`
 
 ---
 
-## Użycie w stronie (script + CSS)
+## Szybki start (Getting started)
 
-1. Podłącz style (Font Awesome i JetBrains Mono są opcjonalne, ale zalecane):
+1. Dołącz CSS i JS (z CDN lub lokalnie – patrz wyżej).
+2. Opcjonalnie: Font Awesome i JetBrains Mono (zalecane dla ikon i czcionki):
 
 ```html
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/alert.css" rel="stylesheet">
 ```
 
-2. Podłącz skrypt biblioteki:
-
-```html
-<script src="dist/industrial-hud.js"></script>
-```
-
-3. Umieść markup HUD w kontenerze (np. `id="app"`). Wszystkie wymagane elementy (nagłówek, terminal, toasty, modale itd.) muszą być wewnątrz tego kontenera – możesz skopiować strukturę z `index.html`.
+3. Umieść markup HUD w kontenerze (np. `<div id="app">...</div>`). Wszystkie elementy (nagłówek, panele, modale, `#toast-container`) muszą być wewnątrz tego kontenera – wzór w `index.html`.
 
 4. Po załadowaniu DOM wywołaj inicjalizację:
 
@@ -86,20 +79,18 @@ W projekcie będziesz miał dostęp do plików z `node_modules/industrial-hud-fr
 </script>
 ```
 
-Jeśli HUD ma zajmować całą stronę, możesz użyć `IndustrialHUD.init(document.body)` i umieścić całą zawartość strony (wraz z modalami i `#toast-container`) w `body`.
-
 ---
 
 ## API (po wywołaniu `init`)
 
-| Metoda                                                   | Opis                                                                                                                                                                   |
-| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `IndustrialHUD.init(root, options)`                      | Inicjuje framework. `root` – selektor CSS (np. `'#app'`) lub element DOM; `options.themeRoot` – opcjonalnie element dla motywu (domyślnie `document.documentElement`). |
-| `IndustrialHUD.confirm(options)`                         | Otwiera modal potwierdzenia. Zwraca `Promise<boolean>`.                                                                                                                |
-| `IndustrialHUD.toast(level, title, message, durationMs)` | Pokazuje toast. `level`: `'info'`, `'success'`, `'warning'`, `'critical'`.                                                                                             |
-| `IndustrialHUD.log(level, msg)`                          | Dopisuje linię do logu terminala (jeśli jest `#terminalOutput`). `level`: `'INFO'`, `'WARN'`, `'ERROR'`.                                                               |
-| `IndustrialHUD.setTheme(isDark)`                         | Ustawia motyw: `true` = ciemny, `false` = jasny.                                                                                                                       |
-| `IndustrialHUD.getTheme()`                               | Zwraca `'dark'` lub `'light'`.                                                                                                                                         |
+| Metoda                                                   | Opis                                                                                                                        |
+| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `IndustrialHUD.init(root, options)`                      | Inicjuje framework. `root` – selektor (np. `'#app'`) lub element DOM; `options.themeRoot` – opcjonalnie element dla motywu. |
+| `IndustrialHUD.confirm(options)`                         | Otwiera modal potwierdzenia. Zwraca `Promise<boolean>`.                                                                     |
+| `IndustrialHUD.toast(level, title, message, durationMs)` | Toast. `level`: `'info'`, `'success'`, `'warning'`, `'critical'`.                                                           |
+| `IndustrialHUD.log(level, msg)`                          | Wpis do logu terminala (`#terminalOutput`). `level`: `'INFO'`, `'WARN'`, `'ERROR'`.                                         |
+| `IndustrialHUD.setTheme(isDark)`                         | Motyw: `true` = ciemny, `false` = jasny.                                                                                    |
+| `IndustrialHUD.getTheme()`                               | Zwraca `'dark'` lub `'light'`.                                                                                              |
 
 ### Przykład: confirm
 
@@ -129,17 +120,20 @@ IndustrialHUD.toast('success', 'Zapisano', 'Dane zostały zapisane.', 5000);
 
 ```
 Industrial HUD Framework/
-├── index.html          # Strona demo (używa main.js + industrial-hud.js)
+├── index.html              # Strona demo
 ├── examples/
-│   └── cdn-example.html   # Przykład ładowania zdalnej biblioteki z CDN
+│   └── cdn-example.html    # Przykład z CDN (jak UIkit – 1 CSS, 1 JS)
 ├── js/
-│   ├── industrial-hud.js   # Biblioteka (API + init)
-│   └── main.js             # Demo: wywołuje IndustrialHUD.init(document.body)
+│   ├── industrial-hud.js    # Źródło biblioteki
+│   └── main.js              # Demo: IndustrialHUD.init(document.body)
 ├── css/
-│   ├── style.css       # Główne style (layout, przyciski, karty, sidebar…)
-│   └── alert.css       # Toasty, modale potwierdzeń
-├── dist/
-│   └── industrial-hud.js   # Kopia biblioteki do dystrybucji (CDN / npm)
+│   ├── style.css            # Źródło: layout, komponenty
+│   └── alert.css            # Źródło: toasty, modale
+├── dist/                    # Build do CDN / npm (jak UIkit)
+│   ├── css/
+│   │   └── industrial-hud.css   # Jeden plik CSS (style + alert)
+│   └── js/
+│       └── industrial-hud.js    # Jeden plik JS
 ├── package.json
 └── README.md
 ```
@@ -148,4 +142,4 @@ Industrial HUD Framework/
 
 ## Demo
 
-Otwórz `index.html` w przeglądarce. Ładowane są `industrial-hud.js` i `main.js`; `main.js` wywołuje `IndustrialHUD.init(document.body)`, więc cała strona działa jak demo frameworka.
+Otwórz `index.html` w przeglądarce. Przykład użycia tylko z CDN: `examples/cdn-example.html` (wymaga opublikowanej paczki na npm lub hostingu z repozytorium).
