@@ -3,6 +3,7 @@
 ## Lokalizacja (Localization)
 
 Dokumentacja i instrukcje dla AI są w dwóch wersjach językowych:
+
 - **Polski (PL):** `pl/` — ten plik, [pl/README.md](README.md), [pl/cursorrules.md](cursorrules.md)
 - **English (EN):** [en/AGENTS.md](../en/AGENTS.md), [en/README.md](../en/README.md), [en/cursorrules.md](../en/cursorrules.md)
 

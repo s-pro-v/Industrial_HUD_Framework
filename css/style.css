@@ -1351,3 +1351,27 @@ body::before {
 .ja-select-item.ja-selected .ja-select-prefix {
     opacity: 1;
 }
+
+.on {
+    position: relative;
+    overflow: hidden;
+}
+
+.on::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 0%;
+    transform: translate(-50%, -50%);
+    transition: width 0.8s, height 0.8s;
+}
+
+.on:hover::before {
+    width: 300px;
+    height: 300px;
+    transition: width 0.8s, height 0.8s;
+}

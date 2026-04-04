@@ -3,6 +3,7 @@
 ## Localization
 
 Documentation and AI instructions are available in two languages:
+
 - **Polish (PL):** [pl/AGENTS.md](../pl/AGENTS.md), [pl/README.md](../pl/README.md), [pl/cursorrules.md](../pl/cursorrules.md)
 - **English (EN):** `en/` — this file, [en/README.md](README.md), [en/cursorrules.md](cursorrules.md)
 

@@ -6,17 +6,24 @@ Ten projekt używa **wyłącznie** biblioteki **Industrial HUD Framework** do wa
 
 - **Jeden CSS:** `dist/css/industrial-hud.css` (lub z CDN: `industrial-hud-framework` → `dist/css/industrial-hud.css`).
 - **Jeden JS:** `dist/js/industrial-hud.js` (lub z CDN: `dist/js/industrial-hud.js`).
-- **Inicjalizacja:** po załadowaniu DOM wywołaj `IndustrialHUD.init('#app')` (lub `IndustrialHUD.init(document.body)`). Cały markup HUD (w tym modale i `#toast-container`) musi być wewnątrz tego kontenera.
+- **Inicjalizacja:** po załadowaniu DOM wywołaj `IndustrialHUD.init('#app', { themeRoot: document.documentElement })`. Cały markup HUD (w tym modale i `#toast-container`) musi być wewnątrz **`#app`**. `document.body` tylko przy wyjątkowo prostej stronie wyłącznie z HUD.
 
-## 2. Zakazane frameworki
+## 2. Kontenery i wymiary
+
+- **`#app`** — root dla `init`: w środku **`.container`** (widoczny HUD), **modale**, **sidebar**, **`#toast-container`** — nic z tego nie zostawiaj jako bezpośrednie dziecko `<body>` poza `#app`.
+- **`.container`** — layout kolumny wewnątrz `#app`; **nie** zastępuje `#app`.
+- **Szerokość / wysokość** — ustawiaj na `#app` lub `.container` (albo na konkretnym panelu, np. `.editor-container`) przez style inline albo CSS strony: `width`, `max-width`, `height`, `min-height`, `vh`/`%`, `clamp()`; przy stałej wysokości dodaj `overflow: auto` tam, gdzie treść może rosnąć. Szczegóły: **`pl/cursorrules.md`** (sekcja „Kontenery i wymiary”).
+
+## 3. Zakazane frameworki
 
 Nie używaj w tym projekcie: Bootstrap, Tailwind CSS, Material UI, Foundation, Bulma ani żadnych innych frameworków UI. Wszystkie komponenty muszą opierać się na klasach i API Industrial HUD Framework.
 
-## 3. Komponenty – klasy do użycia
+## 4. Komponenty – klasy do użycia
 
 | Element             | Klasy / struktura                                                                                                                                                                                                                                                                        |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kontener główny     | `container`                                                                                                                                                                                                                                                                              |
+| Root init (`init`)  | `#app` — obejmuje `.container`, modale, `#toast-container`                                                                                                                                                                                                                               |
+| Kolumna layoutu     | `container` — zawsze wewnątrz `#app`                                                                                                                                                                                                                                                                              |
 | Nagłówek HUD        | `hud-header`, wewnątrz `system-meta`, `system-meta-item`                                                                                                                                                                                                                                 |
 | Pasek akcji         | `action-bar panel`                                                                                                                                                                                                                                                                       |
 | Przyciski           | `btn-sm` / `btn-md` / `btn-lg` + **zawsze** `btn-ripple`; niebezpieczne: + `danger`                                                                                                                                                                                                      |
@@ -29,18 +36,18 @@ Nie używaj w tym projekcie: Bootstrap, Tailwind CSS, Material UI, Foundation, B
 | Sidebar             | `settings-sidebar`, `settings-tab`, `settings-tab-content`, `setting-item`, `setting-label`, `close-settings btn-ripple`                                                                                                                                                                 |
 | Select              | `ja-select-wrap`, `ja-select-btn btn-ripple`, `ja-select-list`, `ja-select-item`                                                                                                                                                                                                         |
 
-## 4. API (tylko to do komunikatów i motywu)
+## 5. API (tylko to do komunikatów i motywu)
 
 - **Potwierdzenie:** `IndustrialHUD.confirm({ type, title, message, confirmText, cancelText, onConfirm, onCancel })` → Promise&lt;boolean&gt;.
 - **Toast:** `IndustrialHUD.toast('info'|'success'|'warning'|'critical', title, message, durationMs)`.
 - **Log w terminalu:** `IndustrialHUD.log('INFO'|'WARN'|'ERROR', msg)`.
 - **Motyw:** `IndustrialHUD.setTheme(true|false)`, `IndustrialHUD.getTheme()`.
 
-## 5. Referencja markupu
+## 6. Referencja markupu
 
 Wzór pełnej strony (nagłówek, akcje, panele, modale, toasty) jest w pliku **`index.html`**. Przy dodawaniu nowych widoków kopiuj istniejące struktury i klasy; nie wymyślaj nowych systemów komponentów.
 
-## 6. Motyw (atrybut i zmienne)
+## 7. Motyw (atrybut i zmienne)
 
 - `<html theme="dark">` = ciemny, brak atrybutu = jasny.
 - Kolory: `var(--highlight-color)`, `var(--danger-color)`, `var(--success-color)`, `var(--warning-color)`, `var(--info-color)`, `var(--text-primary)`, `var(--text-muted)`, `var(--panel-bg)`, `var(--border-color)`.

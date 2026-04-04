@@ -69,9 +69,9 @@ In your project:
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 ```
 
-3. Put the HUD markup inside a container (e.g. `<div id="app">...</div>`). All elements (header, panels, modals, `#toast-container`) must be inside that container – see `index.html` for the full structure.
+1. Put the HUD markup inside a container (e.g. `<div id="app">...</div>`). All elements (header, panels, modals, `#toast-container`) must be inside that container – see `index.html` for the full structure.
 
-4. After DOM ready, call init:
+2. After DOM ready, call init:
 
 ```html
 <script>
@@ -86,7 +86,7 @@ In your project:
 ## API (after calling `init`)
 
 | Method | Description |
-|--------|-------------|
+| --- | --- |
 | `IndustrialHUD.init(root, options)` | Initializes the framework. `root` – CSS selector (e.g. `'#app'`) or DOM element; `options.themeRoot` – optional element for theme (default `document.documentElement`). |
 | `IndustrialHUD.confirm(options)` | Opens a confirm modal. Returns `Promise<boolean>`. |
 | `IndustrialHUD.toast(level, title, message, durationMs)` | Shows a toast. `level`: `'info'`, `'success'`, `'warning'`, `'critical'`. |
@@ -120,7 +120,7 @@ IndustrialHUD.toast('success', 'Saved', 'Data has been saved.', 5000);
 
 ## Project structure
 
-```
+```text
 Industrial HUD Framework/
 ├── index.html
 ├── examples/

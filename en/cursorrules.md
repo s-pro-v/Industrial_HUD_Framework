@@ -6,7 +6,17 @@ In this project **all user interfaces must be built only with the Industrial HUD
 
 - **CSS:** One file – `dist/css/industrial-hud.css` (or from CDN: jsDelivr/unpkg `industrial-hud-framework/dist/css/industrial-hud.css`).
 - **JS:** One file – `dist/js/industrial-hud.js` (or from CDN: `industrial-hud-framework/dist/js/industrial-hud.js`).
-- After DOM ready call: `IndustrialHUD.init('#app')` (or `IndustrialHUD.init(document.body)`), where `#app` is the container that holds all HUD content (including modals and toast-container).
+- After DOM ready call: `IndustrialHUD.init('#app', { themeRoot: document.documentElement })`. **`#app` is the default pattern** — it wraps the full HUD. Use `document.body` only when the page is nothing but the HUD and you intentionally skip a dedicated root.
+
+## Containers (`#app` vs `.container`) and dimensions
+
+- **`#app`** — the single element passed to **`IndustrialHUD.init`**. Inside it you must have: **`div.container`** (header, action bar, `workspace`…), **all modals / overlays**, the **settings sidebar**, and **`#toast-container`**. Do not leave modals or toasts outside this root — the library looks them up under `root` (`querySelector`).
+- **`.container`** — the **main column layout** class (flex, `width: 100%`, framework `max-width` ~2000px). It is **not** a substitute for `#app`; it is a child of `#app` holding visible HUD chrome.
+- **Width and height** — when the UI must match given dimensions:
+  - Size **`#app`** or **`container`** via **inline styles** or **app/page CSS** (`width`, `max-width`, `min-width`, `height`, `min-height`, `max-height`) using `px`, `%`, `vh`/`vw`, optionally `min()` / `clamp()` — no external CSS frameworks.
+  - **`.editor-container`** has a default height in the framework; override with `style="height: …; min-height: …"` or host stylesheet rules.
+  - **`workspace`** defaults to two columns, one column below ~1000px; for other layouts use `grid-sys` + `grid-cols-*` or adjust the grid in page CSS while keeping framework panel classes.
+  - With fixed heights use **`overflow: auto`** (or `hidden` where appropriate) so content stays inside the container.
 
 ## Component classes (use these exactly)
 

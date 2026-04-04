@@ -69,9 +69,9 @@ W projekcie:
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 ```
 
-3. Umieść markup HUD w kontenerze (np. `<div id="app">...</div>`). Wszystkie elementy (nagłówek, panele, modale, `#toast-container`) muszą być wewnątrz tego kontenera – wzór w `index.html`.
+1. Umieść markup HUD w kontenerze (np. `<div id="app">...</div>`). Wszystkie elementy (nagłówek, panele, modale, `#toast-container`) muszą być wewnątrz tego kontenera – wzór w `index.html`.
 
-4. Po załadowaniu DOM wywołaj inicjalizację:
+2. Po załadowaniu DOM wywołaj inicjalizację:
 
 ```html
 <script>
@@ -120,7 +120,7 @@ IndustrialHUD.toast('success', 'Zapisano', 'Dane zostały zapisane.', 5000);
 
 ## Struktura projektu
 
-```
+```text
 Industrial HUD Framework/
 ├── index.html
 ├── examples/
